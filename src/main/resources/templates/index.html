@@ -8,6 +8,7 @@
 <div th:if="${!students.isEmpty() && students != null} ">
     <table border="1">
         <tr>
+            <th>Id</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
@@ -15,6 +16,7 @@
         </tr>
         <tr th:each="student: ${students}">
             <td th:text="${student.getId()}"></td>
+            <td th:text="${student.getName()}"></td>
             <td th:text="${student.getLastname()}"></td>
             <td th:text="${student.getStreet()}"></td>
             <td th:text="${student.getNumberPhone()}"></td>
