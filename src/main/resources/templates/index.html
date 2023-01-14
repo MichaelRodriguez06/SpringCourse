@@ -6,13 +6,16 @@
 </head>
 <body>
 <div th:if="${!students.isEmpty() && students != null} ">
+    <a th:href="@{/addstudent}">Agregar estudiante</a>
     <table border="1">
         <tr>
             <th>Id</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
-            <th>Numero de telefono</th>
+            <th>Numero de teléfono</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         <tr th:each="student: ${students}">
             <td th:text="${student.getId()}"></td>
@@ -20,7 +23,10 @@
             <td th:text="${student.getLastname()}"></td>
             <td th:text="${student.getStreet()}"></td>
             <td th:text="${student.getNumberPhone()}"></td>
+            <td><a th:href="@{/setstudent/} + ${student.id}" th:text="Editar"></a></td>
+            <td><a th:href="@{/deletestudent}"></a></td>
         </tr>
+
     </table>
 </div>
 <div th:if="${students.isEmpty() || students == null} ">

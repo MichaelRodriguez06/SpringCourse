@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Student</title>
+</head>
+<body>
+<h1>Datos del estudiante</h1>
+<a th:href="@{/}">Inicio</a>
+<br/>
+
+<form th:action="@{/save_changes}" method="post" th:object="${student}">
+    <input type="hidden" name="id" th:field="*{id}">
+    <label th:text="Nombre"></label>
+    <input type="text" name="name" th:field="*{name}"/>
+    <br>
+    <label th:text="Apellido"></label>
+    <input type="text" name="lastname" th:field="*{lastname}"/>
+
+    <br>
+    <label th:text="Direccion"></label>
+    <input type="text" name="street" th:field="*{street}"/>
+
+    <br>
+    <label th:text="Celular"></label>
+    <input type="text" name="phoneNumber" th:field="*{numberPhone}"/>
+    <br>
+
+    <input type="submit" name="save_changes" value="Guardar cambios">
+
+</form>
+<input type="submit" th:href="@{/}" name="cancel_changes" value="Cancelar">
+</body>
+</html>
