@@ -5,10 +5,10 @@
     <title>Data Student</title>
 </head>
 <body>
-<h1>Datos del estudiante</h1>
 <a th:href="@{/}">Inicio</a>
 <br/>
-
+<header th:replace="layouts/layout :: header"></header>
+<h2>Datos del estudiante</h2>
 <form th:action="@{/save_changes}" method="post" th:object="${student}">
     <input type="hidden" name="id" th:field="*{id}">
     <label th:text="Nombre"></label>
@@ -37,5 +37,6 @@
 
 </form>
 <input type="submit" th:href="@{/}" name="cancel_changes" value="Cancelar">
+<footer th:replace="layouts/layout :: footer"></footer>
 </body>
 </html>

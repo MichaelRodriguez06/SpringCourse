@@ -5,6 +5,7 @@
     <title>Ejemplo spring</title>
 </head>
 <body>
+<header th:replace="layouts/layout :: header"></header>
 <div th:if="${!students.isEmpty() && students != null} ">
     <a th:href="@{/addstudent}">Agregar estudiante</a>
     <table border="1">
@@ -35,5 +36,6 @@
     <a th:href="@{/addstudent}">Agregar estudiante</a>
     Lista de estudiantes esta vacia
 </div>
+<footer th:replace="layouts/layout :: footer"></footer>
 </body>
 </html>
