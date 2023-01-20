@@ -13,17 +13,24 @@
     <input type="hidden" name="id" th:field="*{id}">
     <label th:text="Nombre"></label>
     <input type="text" name="name" th:field="*{name}"/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error nombre</span>
     <br>
     <label th:text="Apellido"></label>
     <input type="text" name="lastname" th:field="*{lastname}"/>
-
+    <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Error apellido</span>
     <br>
     <label th:text="Direccion"></label>
     <input type="text" name="street" th:field="*{street}"/>
+    <span th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Error direccion</span>
 
     <br>
     <label th:text="Celular"></label>
     <input type="text" name="phoneNumber" th:field="*{numberPhone}"/>
+    <span th:if="${#fields.hasErrors('numberPhone')}" th:errors="*{numberPhone}">Error celular</span>
+    <br>
+    <label th:text="Nacimiento"></label>
+    <input type="date" name="birthDate" th:field="*{birthDate}"/>
+    <span th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">Error fechas</span>
     <br>
 
     <input type="submit" name="save_changes" value="Guardar cambios">

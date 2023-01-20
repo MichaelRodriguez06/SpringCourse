@@ -2,8 +2,10 @@ package com.example.spring1.Controllers;
 
 import com.example.spring1.dao.StudentDao;
 import com.example.spring1.services.StudentServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -29,7 +31,14 @@ public class Controller {
     }
 
     @PostMapping("/save_changes")
-    public String saveChangeStudent(Student student) {
+    public String saveChangeStudent(@Valid Student student, Errors errors) {
+        System.out.println("_______________________________________");
+        System.out.println("Error: " + errors.hasErrors());
+        if (errors.hasErrors()) {
+            System.out.println("_______________________________________");
+            System.out.println("Error: " + errors.getAllErrors().toString());
+            return "patch_student";
+        }
         studentService.save(student);
         return "redirect:/";
     }
@@ -39,7 +48,7 @@ public class Controller {
         return "index";
     }
 
-    @GetMapping("/setstudent/{id}")
+    @GetMapping("/setstudent")
     public String setStudent(Student student, Model model) {
         var student1 = studentService.findStudent(student);
         model.addAttribute("student", student1);
@@ -50,7 +59,7 @@ public class Controller {
     public String deleteStudent(Student student) {
         studentService.delete(student);
         System.out.println("-----------------------------------------------------------------------");
-        System.out.println("Eliminar" + student.getId());
+        System.out.println("Eliminar: " + student.getId());
         return "redirect:/";
     }
 
