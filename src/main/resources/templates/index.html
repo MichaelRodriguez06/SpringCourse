@@ -24,7 +24,7 @@
             <td th:text="${student.getStreet()}"></td>
             <td th:text="${student.getNumberPhone()}"></td>
             <td><a th:href="@{/setstudent/} + ${student.id}" th:text="Editar"></a></td>
-            <td><a th:href="@{/deletestudent}"></a></td>
+            <td><a th:href="@{/deletestudent(id=${student.getId()})}" th:text="Eliminar"></a></td>
         </tr>
 
     </table>

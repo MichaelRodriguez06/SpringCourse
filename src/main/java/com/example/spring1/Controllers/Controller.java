@@ -46,5 +46,13 @@ public class Controller {
         return "patch_student";
     }
 
+    @GetMapping("/deletestudent")
+    public String deleteStudent(Student student) {
+        studentService.delete(student);
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("Eliminar" + student.getId());
+        return "redirect:/";
+    }
+
 
 }
